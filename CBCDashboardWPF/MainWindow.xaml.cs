@@ -33,7 +33,6 @@ namespace CBCDashboardWPF
         private void btnTransformOrders_Click(object sender, RoutedEventArgs e)
         {
             string fileName = CBCExcel.OpenWorkbook(caption: "Open Workbook (Square Orders)");
-            int x = x + 1;
 
             if (fileName == string.Empty)
             { 

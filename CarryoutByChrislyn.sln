@@ -7,26 +7,45 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClassLibrary", "ClassLibrar
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CBCDashboardWPF", "CBCDashboardWPF\CBCDashboardWPF.csproj", "{675CC6CE-E07A-4160-BF89-2796A31D1FE5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExcelUtil", "ExcelUtil\ExcelUtil.csproj", "{6F4756C0-C72B-4C77-BCE6-55DB2C7B5E04}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExcelUtil", "ExcelUtil\ExcelUtil.csproj", "{6F4756C0-C72B-4C77-BCE6-55DB2C7B5E04}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleAppTest", "ConsoleAppTest\ConsoleAppTest.csproj", "{ACA0C33F-F5D5-4186-BDD8-7EE2C901BA6D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{77A59760-F7D9-461F-A1A2-409FAC8F4580}"
+	ProjectSection(SolutionItems) = preProject
+		DataSetLayout.docx = DataSetLayout.docx
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
+		MacDebug|Any CPU = MacDebug|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{4855A2A6-4F9F-40FC-9548-F73330C8115C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{4855A2A6-4F9F-40FC-9548-F73330C8115C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4855A2A6-4F9F-40FC-9548-F73330C8115C}.Release|Any CPU.ActiveCfg = Debug|Any CPU
 		{4855A2A6-4F9F-40FC-9548-F73330C8115C}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{4855A2A6-4F9F-40FC-9548-F73330C8115C}.MacDebug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4855A2A6-4F9F-40FC-9548-F73330C8115C}.MacDebug|Any CPU.Build.0 = Debug|Any CPU
 		{675CC6CE-E07A-4160-BF89-2796A31D1FE5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{675CC6CE-E07A-4160-BF89-2796A31D1FE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{675CC6CE-E07A-4160-BF89-2796A31D1FE5}.Release|Any CPU.ActiveCfg = Debug|Any CPU
 		{675CC6CE-E07A-4160-BF89-2796A31D1FE5}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{675CC6CE-E07A-4160-BF89-2796A31D1FE5}.MacDebug|Any CPU.ActiveCfg = Debug|Any CPU
+		{675CC6CE-E07A-4160-BF89-2796A31D1FE5}.MacDebug|Any CPU.Build.0 = Debug|Any CPU
 		{6F4756C0-C72B-4C77-BCE6-55DB2C7B5E04}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6F4756C0-C72B-4C77-BCE6-55DB2C7B5E04}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6F4756C0-C72B-4C77-BCE6-55DB2C7B5E04}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6F4756C0-C72B-4C77-BCE6-55DB2C7B5E04}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6F4756C0-C72B-4C77-BCE6-55DB2C7B5E04}.MacDebug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F4756C0-C72B-4C77-BCE6-55DB2C7B5E04}.MacDebug|Any CPU.Build.0 = Debug|Any CPU
+		{ACA0C33F-F5D5-4186-BDD8-7EE2C901BA6D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ACA0C33F-F5D5-4186-BDD8-7EE2C901BA6D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ACA0C33F-F5D5-4186-BDD8-7EE2C901BA6D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ACA0C33F-F5D5-4186-BDD8-7EE2C901BA6D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ACA0C33F-F5D5-4186-BDD8-7EE2C901BA6D}.MacDebug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ACA0C33F-F5D5-4186-BDD8-7EE2C901BA6D}.MacDebug|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

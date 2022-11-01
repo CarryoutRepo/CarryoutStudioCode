@@ -8,60 +8,62 @@ namespace ClassLibrary.CBCTable
 {
     public class CBCCells : IList<CBCCell>
     {
-        public CBCCell this[int index] { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        private readonly IList<CBCCell> _cBCCells = new List<CBCCell>();
 
-        public int Count => throw new NotImplementedException();
+        public CBCCell this[int index] { get => _cBCCells[index]; set => _cBCCells[index] = value; }
 
-        public bool IsReadOnly => throw new NotImplementedException();
+        public int Count => _cBCCells.Count();
+
+        public bool IsReadOnly => _cBCCells.IsReadOnly;
 
         public void Add(CBCCell item)
         {
-            throw new NotImplementedException();
+            _cBCCells.Add(item: item);
         }
 
         public void Clear()
         {
-            throw new NotImplementedException();
+            _cBCCells.Clear();
         }
 
         public bool Contains(CBCCell item)
         {
-            throw new NotImplementedException();
+            return _cBCCells.Contains(item: item);
         }
 
         public void CopyTo(CBCCell[] array, int arrayIndex)
         {
-            throw new NotImplementedException();
+            _cBCCells.CopyTo(array: array, arrayIndex: arrayIndex);
         }
 
         public IEnumerator<CBCCell> GetEnumerator()
         {
-            throw new NotImplementedException();
+            return _cBCCells.GetEnumerator();
         }
 
         public int IndexOf(CBCCell item)
         {
-            throw new NotImplementedException();
+            return _cBCCells.IndexOf(item: item);
         }
 
         public void Insert(int index, CBCCell item)
         {
-            throw new NotImplementedException();
+            _cBCCells.Insert(index: index, item: item);
         }
 
         public bool Remove(CBCCell item)
         {
-            throw new NotImplementedException();
+            return _cBCCells.Remove(item: item);
         }
 
         public void RemoveAt(int index)
         {
-            throw new NotImplementedException();
+            _cBCCells.RemoveAt(index: index);
         }
 
         IEnumerator IEnumerable.GetEnumerator()
         {
-            throw new NotImplementedException();
+            return _cBCCells.GetEnumerator();
         }
     }
 }
