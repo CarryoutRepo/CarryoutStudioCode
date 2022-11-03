@@ -13,6 +13,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleAppTest", "ConsoleAp
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{77A59760-F7D9-461F-A1A2-409FAC8F4580}"
 	ProjectSection(SolutionItems) = preProject
+		Database\CarryoutByChrislyn.accdb = Database\CarryoutByChrislyn.accdb
 		DataSetLayout.docx = DataSetLayout.docx
 		DataSetLayout.xlsx = DataSetLayout.xlsx
 	EndProjectSection
