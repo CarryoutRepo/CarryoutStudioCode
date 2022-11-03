@@ -11,7 +11,7 @@
             <ColumnDefinition Width="143*"/>
             <ColumnDefinition Width="657*"/>
         </Grid.ColumnDefinitions>
-        <Button x:Name="btnTransformOrders" Content="Transform Orders" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="15" Click="btnTransformOrders_Click" Width="146" Height="35" Margin="-10,0,0,0" Grid.ColumnSpan="2"/>
+        <Button x:Name="TransformOrders" Content="Transform Orders" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="15" Click="TransformOrders_Click" Width="146" Height="35" Margin="-10,0,0,0" Grid.ColumnSpan="2"/>
 
     </Grid>
 </Window>

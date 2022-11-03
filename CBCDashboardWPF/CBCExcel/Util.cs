@@ -1,4 +1,5 @@
 ﻿using System;
+using System.CodeDom;
 using System.Collections.Generic;
 using System.Data;
 using System.IO;
@@ -11,57 +12,67 @@ using System.Windows.Controls;
 using System.Windows.Documents;
 using System.Windows.Shapes;
 using ClassLibrary;
-using ClassLibrary.CBCTable;
+using ClassLibrary.CBCTableObjects;
+using ClassLibrary.CBCDataObjects;
 using Microsoft.Office.Interop.Excel;
 using Application = Microsoft.Office.Interop.Excel.Application;
-using DataTable = System.Data.DataTable;
 
-namespace CBCDashboardWPF.Excel
+namespace CBCDashboardWPF.CBCExcel
 {
-    public class CBCExcel
+    public static class Util
     {
+        private const string ItemsWorksheetName = "Items";
         public static string OpenWorkbook(string caption)
         {
             Application? application = null;
             Workbook? workbook = null;
-            string fileName = string.Empty;
 
+            string fileName = string.Empty;
             try
             {
-                
                 var dialog = new Microsoft.Win32.OpenFileDialog();
                 dialog.Title = caption;
                 dialog.FileName = "";
                 dialog.DefaultExt = ".xls*";
                 dialog.Filter = "All Excel Files|*.xls*";
                 bool? result = dialog.ShowDialog();
-
-                // Process open file dialog box results
                 if (result == true)
                 {
                     application = new Application();
                     application.Visible = false;
-
                     fileName = dialog.FileName;
-                    application.Workbooks.Open(fileName);
+                    application.Workbooks.Open(Filename: fileName, ReadOnly: true);
                     workbook = application.Workbooks[1];
-                    Worksheet worksheet = workbook.Worksheets[1];
-                    GetTable(worksheet);
-
-                    //TODO: put dialog box here
+                    Worksheet worksheet = workbook.Worksheets[ItemsWorksheetName];
+                    CBCTable? cbcTable = GetItemsTable(worksheet);
+                    if (cbcTable != null)
+                    {
+                        Items items = Transformations.TransformCBCellsToItems(cbcTable);
+                    }
+                    if (cbcTable == null)
+                    {
+                        throw new Exception("Unable to Get Items Table from Worksheet.");
+                    }
                     string newFilename = fileName.Replace(".xlsx", "") + " (Converted)" + ".xls";
                     workbook.SaveAs2(Filename: newFilename, FileFormat: XlFileFormat.xlWorkbookDefault);
+                    if (cbcTable != null)
+                    {
+                        MessageBox.Show("Success!", "Carryout By Chrislyn", MessageBoxButton.OK, MessageBoxImage.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error Reading Worksheet", "Carryout By Chrislyn", MessageBoxButton.OK, MessageBoxImage.Information);
+                    }
 
-                    MessageBox.Show("Success!", "Carryout By Chrislyn", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
             }
             catch (Exception ex)
             {
-                ExceptionHandler.HandleException(ex);
+                ExceptionHandler.Handle(ex);
             }
             finally
-            { 
-                if (workbook != null)                  
+            {
+                if (workbook != null)
                 {
                     workbook.Close(false);
                 }
@@ -70,45 +81,42 @@ namespace CBCDashboardWPF.Excel
                     application.Quit();
                 }
             }
-
             return fileName;
         }
-
-        public static void GetTable(Worksheet worksheet)
+        public static CBCTable? GetItemsTable(Worksheet worksheet)
         {
-            if (worksheet.ListObjects.Count > 1)
+            CBCTable? returnCBCTable = null;
+            try
             {
-                throw new Exception("There are too many tables in the first worksheet.");
-            }
-            CBCTable cBCTable = new CBCTable();
+                ListObject listObject = worksheet.ListObjects[1];
 
-            foreach (ListObject listObject in worksheet.ListObjects)
-            {
-                MessageBox.Show(messageBoxText: listObject.Name);
+                CBCTable cbcTable = new();
                 foreach (ListColumn listColumn in listObject.ListColumns)
                 {
-                    CBCColumn cBCColumn = new(number: listColumn.Index, name: listColumn.Name);
-                    cBCTable.CBCColumns.Add(cBCColumn);
+                    CBCColumn cbcColumn = new(number: listColumn.Index, name: listColumn.Name);
+                    cbcTable.CBCColumns.Add(cbcColumn);
                 }
-                foreach (ListRow listRow in listObject.ListRows)
+                for (int rowIndex = 2; rowIndex <= listObject.ListRows.Count + 1; rowIndex++)
                 {
-                    CBCRow cBCRow = new(listRow.Index);
-                    cBCTable.CBCRows.Add(cBCRow);
-                }
-        
-                for (int row = 1; row <= listObject.ListRows.Count; row++)
-                {
-                    CBCRow cBCRow = cBCTable.CBCRows[row];
-                    for (int col = 0; col < listObject.ListColumns.Count; col++)
+                    CBCRow cbcRow = new(rowIndex - 1);
+                    cbcTable.CBCRows.Add(cbcRow);
+                    foreach (CBCColumn cbcColumn in cbcTable.CBCColumns)
                     {
-                        CBCColumn cBCColumn = cBCTable.CBCColumns[col];
-                        CBCCell cBCCell = new(cBCRow, cBCColumn, worksheet.Cells[row, col].Value);
-                        cBCTable.CBCCells.Add(cBCCell);
+                        var value = worksheet.Cells[rowIndex, cbcColumn.Number].Value2;
+                        CBCCell cbcCell = new(cbcRow: cbcRow,
+                                                cbcColumn: cbcColumn,
+                                                value: value);
+                        cbcTable.CBCCells.Add(cbcCell);
                     }
                 }
+                returnCBCTable = cbcTable;
             }
+            catch (Exception)
+            {
+                throw;
+            }
+            return returnCBCTable;
         }
-
         //public static DataTable ExcelToDataTable(string fileName)
         //{
         //    FileStream stream = File.Open(fileName, FileMode.Open, FileAccess.Read);
@@ -117,7 +125,6 @@ namespace CBCDashboardWPF.Excel
         //    DataSet result = excelReader.AsDataSet();
         //    DataTableCollection table = result.Tables;
         //    DataTable? resultTable = table["Sheet1"];
-
         //    return resultTable;
         //}
         //public static List<Datacollection> dataCol = new List<Datacollection>();
@@ -150,9 +157,7 @@ namespace CBCDashboardWPF.Excel
         //        string? data = (from colData in dataCol
         //                       where colData.colName == columnName && colData.rowNumber == rowNumber
         //                       select colData.colValue).SingleOrDefault();
-
         //        //var data = dataCol.Where(x => x.colName == columnName && x.rowNumber == rowNumber).SingleOrDefault().colValue;
-
         //        return data;
         //    }
         //    catch (Exception e)

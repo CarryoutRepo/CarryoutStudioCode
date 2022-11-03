@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ClassLibrary.CBCTable
+namespace ClassLibrary.CBCTableObjects
 {
     public class CBCColumn
     {
