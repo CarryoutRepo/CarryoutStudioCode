@@ -9,60 +9,60 @@ namespace ClassLibrary.CBCTable
 {
     public class CBCRows : IList<CBCRow>
     {
-        private readonly IList<CBCRow> _cBCRows = new List<CBCRow>();
+        public CBCRow this[int index] { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
-        public CBCRow this[int index] { get => _cBCRows[index]; set => _cBCRows[index] = value; }
+        public int Count => throw new NotImplementedException();
 
-        public int Count => _cBCRows.Count();
-
-        public bool IsReadOnly => _cBCRows.IsReadOnly;
+        public bool IsReadOnly => throw new NotImplementedException();
 
         public void Add(CBCRow item)
         {
-            _cBCRows.Add(item: item);
-        }        
+            throw new NotImplementedException();
+        }
+
         public void Clear()
         {
-            _cBCRows.Clear();
+            throw new NotImplementedException();
         }
+
         public bool Contains(CBCRow item)
         {
-            return _cBCRows.Contains(item: item);
+            throw new NotImplementedException();
         }
 
         public void CopyTo(CBCRow[] array, int arrayIndex)
         {
-            _cBCRows.CopyTo(array: array, arrayIndex: arrayIndex);
+            throw new NotImplementedException();
         }
 
         public IEnumerator<CBCRow> GetEnumerator()
         {
-            return _cBCRows.GetEnumerator();
+            throw new NotImplementedException();
         }
 
         public int IndexOf(CBCRow item)
         {
-            return _cBCRows.IndexOf(item: item);
+            throw new NotImplementedException();
         }
 
         public void Insert(int index, CBCRow item)
         {
-            _cBCRows.Insert(index: index, item: item);
+            throw new NotImplementedException();
         }
 
         public bool Remove(CBCRow item)
         {
-            return _cBCRows.Remove(item: item);
+            throw new NotImplementedException();
         }
 
         public void RemoveAt(int index)
         {
-            _cBCRows.RemoveAt(index: index);
+            throw new NotImplementedException();
         }
 
         IEnumerator IEnumerable.GetEnumerator()
         {
-            return _cBCRows.GetEnumerator();
+            throw new NotImplementedException();
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 using System;
-w
+
 namespace ClassLibrary
 {
     internal static class ExceptionHandler

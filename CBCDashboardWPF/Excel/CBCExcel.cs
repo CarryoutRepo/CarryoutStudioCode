@@ -84,7 +84,7 @@ namespace CBCDashboardWPF.Excel
 
             foreach (ListObject listObject in worksheet.ListObjects)
             {
-                //MessageBox.Show(messageBoxText: listObject.Name);
+                MessageBox.Show(messageBoxText: listObject.Name);
                 foreach (ListColumn listColumn in listObject.ListColumns)
                 {
                     CBCColumn cBCColumn = new(number: listColumn.Index, name: listColumn.Name);

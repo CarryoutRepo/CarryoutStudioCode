@@ -3,68 +3,65 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using ClassLibrary.CBCOverride;
 
 namespace ClassLibrary.CBCTable
 {
     public class CBCColumns : IList<CBCColumn>
     {
-        private readonly IList<CBCColumn> _cBCColumns = new List<CBCColumn>();
+        public CBCColumn this[int index] { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
-        public CBCColumn this[int index] { get => _cBCColumns[index]; set => _cBCColumns[index] = value; }
+        public int Count => throw new NotImplementedException();
 
-        public int Count => _cBCColumns.Count();
-
-        public bool IsReadOnly => _cBCColumns.IsReadOnly;
+        public bool IsReadOnly => throw new NotImplementedException();
 
         public void Add(CBCColumn item)
         {
-            _cBCColumns.Add(item: item);
+            throw new NotImplementedException();
         }
 
         public void Clear()
         {
-            _cBCColumns.Clear();
+            throw new NotImplementedException();
         }
 
         public bool Contains(CBCColumn item)
         {
-            return _cBCColumns.Contains(item: item);
+            throw new NotImplementedException();
         }
 
         public void CopyTo(CBCColumn[] array, int arrayIndex)
         {
-            _cBCColumns.CopyTo(array: array, arrayIndex: arrayIndex);
+            throw new NotImplementedException();
         }
 
         public IEnumerator<CBCColumn> GetEnumerator()
         {
-            return _cBCColumns.GetEnumerator();
+            throw new NotImplementedException();
         }
 
         public int IndexOf(CBCColumn item)
         {
-            return _cBCColumns.IndexOf(item: item);
+            throw new NotImplementedException();
         }
 
         public void Insert(int index, CBCColumn item)
         {
-            _cBCColumns.Insert(index: index, item: item);
+            throw new NotImplementedException();
         }
 
         public bool Remove(CBCColumn item)
         {
-            return _cBCColumns.Remove(item: item);
+            throw new NotImplementedException();
         }
 
         public void RemoveAt(int index)
         {
-            _cBCColumns.RemoveAt(index: index);
+            throw new NotImplementedException();
         }
 
         IEnumerator IEnumerable.GetEnumerator()
         {
-            return _cBCColumns.GetEnumerator();
+            throw new NotImplementedException();
         }
     }
 }

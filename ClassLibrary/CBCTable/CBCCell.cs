@@ -14,10 +14,10 @@ namespace ClassLibrary.CBCTable
         public CBCRow? CBCRow { get; set; }
         public object? Value { get; set; }
 
-        public CBCCell(CBCRow cBCRow, CBCColumn cBCColumn, object value)
+        public CBCCell(CBCRow cbcRow, CBCColumn cbcColumn, object value)
         {
-            CBCRow = cBCRow;
-            CBCColumn = cBCColumn;
+            CBCRow = cbcRow;
+            CBCColumn = cbcColumn;
             Value = value;
         }
     }
