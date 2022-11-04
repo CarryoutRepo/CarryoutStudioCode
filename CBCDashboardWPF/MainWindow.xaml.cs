@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using ClassLibrary;
+using System.Data.OleDb;
 
 namespace CBCDashboardWPF
 {
@@ -28,10 +29,11 @@ namespace CBCDashboardWPF
 
         private void TransformOrders_Click(object sender, RoutedEventArgs e)
         {
-            if (!(CBCExcel.Util.OpenWorkbook(caption: "Open Workbook (Square Orders)") == string.Empty))
-            { 
-                return;
-            };
+            CBCAccess.Util.AddItems(new());
+            //if (!(CBCExcel.Util.OpenWorkbook(caption: "Open Workbook (Square Orders)") == string.Empty))
+            //{ 
+            //    return;
+            //};
             
         }
     }
